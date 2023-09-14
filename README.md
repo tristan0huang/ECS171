@@ -33,23 +33,7 @@ Using the pairplot method from the seaborn library, we observed a positive corre
 #### 1. Polynomial Regression
 We use the `PolynomialFeatures` from the sklearn lib and generate a feature matrix of all polynomial combinations. We use a pair of features with the degree paraemter set to 2. The model if fit with the polynomial features using `LinearRegression` from the sklearn lib. we use the `predict` method to plot the regression line with points of the real data. 
 ##### Parameters chosen
-`features = ['day', 'nswprice', 'date']`
-`target = [nswdemand]`
-`degree = 2`
-#### 2. Logistic Regression
-We set the target and features and split the data where 20% of the data will be used for testing and 80% used for training. We use `LogisticRegression` from the sklearn lib where it fits the model and later creates a prediction. We check the accuracy with the `accuracy_score` method from sklearn lib. We evaluate a `confustion_matrix` via the sklearn lib to see the performance of the classification. Then we plot the data.
-#### Parameters chosen
-`features = [nswdemand]`
-`target = class`
-#### 3. Long Short Term Memory
-This is a predictive model to predict `nswdemand` based on the features `features = ['date','day', 'period', 'nswprice', 'nswdemand', 'vicprice', 'vicdemand', 'transfer']`
-first we used the `MinMaxScaler` method from sklearn in order to ensure our data was normalized. We used the `Time Series Generator` method to group the data by `length=step_num` where `step_num` is `48`, because there are 48 instances for each time period of one day. We used two LSTM layers with 50 units each preceeding the dense layer with one unit. The function trains the model for 3 epochs where 1 epoch is a complete pass through the entire trained dataset. We generate predictions on the test data using the trained model. First creating a `TimeseriesGenerator` for test data and using the `predict` method to generate predictions. We plot the real data and the predictions on a line chart use matplotlib.
 
-##### Parameters chosen
-`batch_size=1000`
-`epoch=3` 
-`step_num=48`
-`features = ['date','day', 'period', 'nswprice', 'nswdemand', 'vicprice', 'vicdemand', 'transfer']`
 #### 4. Neural Network
 ##### Six hidden layers, K-Fold Cross Validation (K=5)
 ## Results section.
@@ -64,8 +48,6 @@ No exploration of results is done here. This is mainly just a summary of your re
 ## Discussion section: 
 *This is where you will discuss the why, and your interpretation and your though process from beginning to end. This will mimic the sections you have created in your methods section as well as new sections you feel you need to create. You can also discuss how believable your results are at each step. You can discuss any short comings. It's ok to criticize as this shows your intellectual merit, as to how you are thinking about things scientifically and how you are able to correctly scrutinize things and find short comings. In science we never really find the perfect solution, especially since we know something will probably come up int he future (i.e. donkeys) and mess everything up. If you do it's probably a unicorn or the data and model you chose are just perfect for each other!*
 
-In the initial phase of our analysis, we applied a polynomial regression to the data. The main reason for this choice was the observation of a saturation effect between `nswprice` and `nswdemand` which suggested that a linear model might not be adequate. The polynomial regression could not handle binary nature of the class label (values of either 1 or 0 for `UP` or `DOWN`) and therefore we applied logsitic regression. We tried to apply Long Short Term Memory model to predict the `nswdemand` based on all features of the electricity market. This was chosen due to its ability to predict long term dependencies which would be useful for prediciting markets with a time series. One major issue was the interpretation of the results. The graph generated from the LSTM model was difficult to interpret, and therefore we did not know if it had been implemented correctly. This made it extremely challenging to acquire any insight from the model itself. Due to these shortcoming we decided to implement a more familiar model of neural networks.
-In the future we could consider using other types of models that are easier to interpret such as decision trees and random forests.
 ## Conclusion section:
 *This is where you do a mind dump on your opinions and possible future directions. Basically what you wish you could have done differently. Here you close with final thoughts*
 
