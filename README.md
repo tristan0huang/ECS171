@@ -32,8 +32,8 @@ We decided to drop the tagline, title, and overview columns, and all of the nan 
 ##### Parameters chosen
 #### 2. Long Short Term Memory
 ##### Parameters chosen
-#### 3. Classification 
-##### Parameters chosen
+#### 3. Neural Network
+##### Six hidden layers, K-Fold Cross Validation (K=5)
 ## Results section.
 *This will include the results from the methods listed above (C). You will have figures here about your results as well.
 No exploration of results is done here. This is mainly just a summary of your results. The sub-sections will be the same as the sections in your methods section.*
